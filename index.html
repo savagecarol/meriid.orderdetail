@@ -50,67 +50,71 @@
 <!-- form -->  
 
 
+<div id="alert"  style="display: none;" class="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+  <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+  <span class="sr-only">Info</span>
+  <div>
+    <span class="font-medium">Danger alert!</span> Change a few things up and try submitting again.
+  </div>
+</div>
+
+
 <section id="trackform" class="text-gray-600 body-font">
     <div class="container  pl-24 pr-20 py-24 mx-auto flex flex-wrap items-center">
       <div class="w-128"> <img src="login.gif" alt="logo"  width="400">  </div>
+
+     
        
-      <div id="form_validation" class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+      <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
         <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Track your Order</h2>
-        <div class="relative mb-4">
-          <label for="full-name" class="leading-7 text-sm text-gray-600">Enter Order Id</label>
-          <input type="text" id="full-name" name="full-name" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        <div class="relative mb-5">
+          <label for="full-name" class="leading-7 text-sm text-gray-600">Enter Order Id</label> <br>
+          <input type="text" id="order-id" name="order-id" class="w-24  mr-10 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          
+          <button type="submit" class="mr-2 text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg"> Send OTP </button>
         </div>
 
         <div class="relative mb-4">
-          <label for="email" class="leading-7 text-sm text-gray-600">Enter otp</label>
-          <input type="email" id="email" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          <label for="email" class="leading-7 text-sm text-gray-600">Enter OTP</label>
+          <input type="email" id="otp" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          
         </div>
 
-        <button onclick= "show_section()" type="submit" class="text-white bg-orange-500 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg">Button</button>
+        <button onclick= "show_section()" type="submit" class="text-white bg-orange-500 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg">Submit</button>
       </div>
     </div>
   </section>
 
 
   <script>
-    // form validation
-    const form_validation = document.getElementById('form_validation');
-    const name= document.getElementById('full-name');
-    const email= document.getElementById('email');
 
-    form_validation.addEventListener('submit', (e) => {
-      
-      if(name.value === '' || email.value === ''){
-        alert('Please fill all the fields');
-        e.preventDefault();
-      }
-      else{
-        alert('Form Submitted Successfully');
-      }
-    } );
-
-
-
-
-
-
-    
    // Show Section  
     var x =0;
     function show_section() {
-      if (x ==1){
+    const name= document.getElementById('order-id'); 
+    const email= document.getElementById('otp');
+
+    console.log(name.value);
+    console.log(email.value);
+
+    if (name.value == ""  || email.value == "") {
+      alert("Please, fill the complete information"); 
+    }
+        
+    else {
+     if (x ==1){
         
         document.getElementById("trackform").style.display = "block";
         return x=0;
-      }
+       }
 
-      else {
+     else {
         document.getElementById("trackform").style.display = "none";
         document.getElementById("afterotp").style.display = "block";
         return x=1;
       }
 
-    }
+    } }
 
  </script>
 
